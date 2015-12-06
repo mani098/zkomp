@@ -1,0 +1,31 @@
+#!/bin/bash
+
+source optparse.bash || exit 1
+optparse.define short=p long=path desc="Input File or Directory" variable=file_path 
+optparse.define short=f long=format desc="Compression Format eg: tar, tar.gz, iso" variable=format
+optparse.define short=d long=decompress desc="Option to Decompress the specified File (or) Directory" variable=decompress default=false
+source $( optparse.build )
+
+source ./utils || exit 1
+validate_path $file_path
+
+# echo $file_path
+# echo $format
+# echo $decompress
+
+source ./zkomp.conf	|| exit 1
+
+if [ ! -z $format ]; then
+	echo $format
+	exit 1
+else
+	# Default: Tar Gzip (.tar.gz)
+	default_command=${default}[command];	default_command=${!default_command}
+	default_options=${default}[options];	default_options=${!default_options}
+	default_format=${default}[format];	default_format=${!default_format}
+	echo "Default: $default_format"
+	exec $default_command $default_options $file_path.$default_format $file_path
+	exit 1
+fi
+
+# 	exec tar ${tar_gz["options"]} $1${tar_gz["file_format"]} $1

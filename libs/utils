@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Validating the file or DIR exists and not repearinf twice or more in the arg
+validate_path() {
+	if [[ -d $1 ]]; then
+	    return 0 # 0 = true
+	elif [[ -f $1 ]]; then
+	    return 0 # 0 = true
+	else
+	    echo "$1: No such File or Directory"
+	    exit 1
+	fi
+}
+
