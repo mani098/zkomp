@@ -2,13 +2,31 @@
 
 # Validating the file or DIR exists and not repearinf twice or more in the arg
 validate_path() {
-	if [[ -d $1 ]]; then
-	    return 0 # 0 = true
-	elif [[ -f $1 ]]; then
-	    return 0 # 0 = true
-	else
-	    echo "$1: No such File or Directory"
-	    exit 1
-	fi
+    if [[ -d $1 ]]; then
+        return 0 # 0 = true
+    elif [[ -f $1 ]]; then
+        return 0 # 0 = true
+    else
+        echo "$1: No such File or Directory"
+        exit 1
+    fi
 }
 
+# Spinner to show the progress of the process
+spinner() {
+    spin[0]="-"
+    spin[1]="/"
+    spin[2]="\\"
+    spin[3]="|"
+    spin[4]="//"
+    echo -n "[processing] ${spin[0]}"
+    while kill -0 $pid 2>/dev/null
+    do
+        for i in "${spin[@]}"
+        do
+            echo -ne "\b$i"
+            sleep 0.05
+        done
+    done
+    echo -ne "\n"
+}
