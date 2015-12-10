@@ -9,7 +9,6 @@ source $( optparse.build )
 source ./libs/utils || exit 1
 validate_path $source_path
 
-source ./zkomp.conf || exit 1
 if [ ! -z $extract ]; then
     extract_file $source_path
     pid=$! # Process Id of the previous running command
@@ -17,18 +16,19 @@ if [ ! -z $extract ]; then
     exit 
 fi
 
+source ./zkomp.conf || exit 1
 if [ ! -z $format ]; then
-    echo $format
+    compress_with_format $format $source_path
+    spinner $pid
 else
     # Default: Tar Gzip (.tar.gz)
     default_command=${default}[command];    default_command=${!default_command}
     default_options=${default}[options];    default_options=${!default_options}
     default_format=${default}[format];  default_format=${!default_format}
     echo "Default: $default_format"
-    exec $default_command $default_options $source_path.$default_format $source_path &
+    exec $default_command $default_options $source_path$default_format $source_path &
     pid=$! # Process Id of the previous running command
     spinner $pid
 fi
 
-echo "Done...."
 exit 
