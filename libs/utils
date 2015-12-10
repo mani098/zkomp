@@ -28,7 +28,7 @@ spinner() {
         for i in "${spin[@]}"
         do
             echo -ne "\b$i"
-            sleep 0.08
+            sleep 0.09
         done
     done
     echo -ne "\n"
@@ -48,10 +48,16 @@ extract_file() {
         *.zip) unzip $1 &;;
         *.Z) uncompress $1 &;;
         *.7z) 7z x $1 &;;
-        *.iso) 7z x $1 -h &;;
+        *.iso) extract_iso $1;;
         *) echo "'$1' cannot be extracted via zkomp" ;;
         esac
     else
         echo "'$1' is not a valid file"
     fi
+}
+
+extract_iso(){
+    iso_file=$1
+    output_dir=${1%.*}
+    exec 7z x $1 -o$output_dir | grep zkomp &
 }
