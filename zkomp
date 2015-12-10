@@ -1,18 +1,21 @@
 #!/bin/bash
 
 source ./libs/optparse.bash || exit 1
-optparse.define short=s long=path desc="Input File or Directory" variable=source_path 
+optparse.define short=p long=path desc="Input File or Directory" variable=source_path
 optparse.define short=f long=format desc="Compression Format eg: tar, tar.gz, iso" variable=format
-optparse.define short=e long=extract desc="Option to Decompress the specified File (or) Directory" variable=extract 
+optparse.define short=e long=extract desc="Option to Decompress the specified File (or) Directory" variable=extract
 source $( optparse.build )
 
 source ./libs/utils || exit 1
 validate_path $source_path
 
 source ./zkomp.conf || exit 1
-# if [ ! -z $extract ]; then
-
-# fi
+if [ ! -z $extract ]; then
+    extract_file $source_path
+    pid=$! # Process Id of the previous running command
+    spinner $pid
+    exit
+fi
 
 if [ ! -z $format ]; then
     echo $format
@@ -26,5 +29,5 @@ else
     exec $default_command $default_options $source_path.$default_format $source_path &
     pid=$! # Process Id of the previous running command
     spinner $pid
-    
+    echo "Done...."
 fi
