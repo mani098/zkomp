@@ -19,16 +19,10 @@ fi
 source ./zkomp.conf || exit 1
 if [ ! -z $format ]; then
     compress_with_format $format $source_path
-    spinner $pid
 else
     # Default: Tar Gzip (.tar.gz)
-    default_command=${default}[command];    default_command=${!default_command}
-    default_options=${default}[options];    default_options=${!default_options}
-    default_format=${default}[format];  default_format=${!default_format}
-    echo "Default: $default_format"
-    exec $default_command $default_options $source_path$default_format $source_path &
-    pid=$! # Process Id of the previous running command
-    spinner $pid
+    echo "Default: ${default}"
+    compress_with_format ${default} $source_path
 fi
 
 exit 

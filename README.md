@@ -33,12 +33,12 @@ OPTIONS:
   - `./zkomp -p ~/downloads/gitbook.iso -e`
 
 ##### Task List
-
-- [ ] &nbsp; Save the archive in a different format.      
+    
 - [x] &nbsp; Tar GZip (.tar.gz)              
 - [x] &nbsp; Tar format (.tar)
 - [x] &nbsp; Tar Bzip2 (.tar.bz2)
 - [x] &nbsp; ISO format (.iso)
-- [ ] &nbsp; ZIP Archive (.zip)
+- [x] &nbsp; ZIP Archive (.zip)
 - [ ] &nbsp; Z format (.Z)
 - [ ] &nbsp; 7-Zip Compressed File (.7z)
+- [ ] &nbsp; Save the archive in a different format.  
