@@ -2,8 +2,8 @@
 
 source ./libs/optparse.bash || exit 1
 optparse.define short=p long=path desc="Input File or Directory" variable=source_path
-optparse.define short=f long=format desc="Compression Format eg: tar, tar.gz, iso" variable=format
-optparse.define short=e long=extract desc="Option to extract the specified File" variable=extract value=False
+optparse.define short=f long=format desc="Archive Format eg: tar, tar.gz, iso" variable=format
+optparse.define short=e long=extract desc="Extract the contents of the archives in the archive folder" variable=extract value=False
 source $( optparse.build )
 
 source ./libs/utils || exit 1

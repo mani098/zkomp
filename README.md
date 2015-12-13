@@ -14,14 +14,23 @@ Zkomp is very ease to use.
 - Extract it and goto `zkomp` folder 
 - run `./zkomp --help`
 
+```
+usage: ./zkomp [OPTIONS]    
+OPTIONS:   
+	-p --path:    Input File or Directory   
+	-f --format:  Archive Format eg: tar, tar.gz, iso  
+	-e --extract: Extract the contents of the archives in the archive folder  
+    -? --help  :  usage 
+```
+
 ## Example
 
 - Compress/Archive
   - `./zkomp -p ~/Downloads/gitbook`  Default format to archive is `.tar.gz`
   - `./zkomp -p ~/Downloads/gitbook -f iso` The default format can be overided by -f(or)--format
 - Extract
-  - `./zkomp -p ~/downloads/gitbook.tar.gz` <br/>
-  - `./zkomp -p ~/downloads/gitbook.iso`
+  - `./zkomp -p ~/downloads/gitbook.tar.gz -e` <br/>
+  - `./zkomp -p ~/downloads/gitbook.iso -e`
 
 ##### Task List
 
