@@ -6,7 +6,7 @@ Zkomp is a light weight command line archive manager for all linux distros.
   - Create archives.
   - Extract files from archive.
 
-## How to use ?
+### How to use ?
 
 Zkomp is very ease to use. 
 
@@ -20,10 +20,10 @@ OPTIONS:
 	-p --path:    Input File or Directory   
 	-f --format:  Archive Format eg: tar, tar.gz, iso  
 	-e --extract: Extract the contents of the archives in the archive folder  
-    -? --help  :  usage 
+  -? --help  :  usage 
 ```
 
-## Example
+### Example
 
 - Compress/Archive
   - `./zkomp -p ~/Downloads/gitbook`  Default format to archive is `.tar.gz`
@@ -32,7 +32,7 @@ OPTIONS:
   - `./zkomp -p ~/downloads/gitbook.tar.gz -e` <br/>
   - `./zkomp -p ~/downloads/gitbook.iso -e`
 
-##### Task List
+### Task List
     
 - [x] &nbsp; Tar GZip (.tar.gz)              
 - [x] &nbsp; Tar format (.tar)
