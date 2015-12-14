@@ -42,3 +42,8 @@ OPTIONS:
 - [ ] &nbsp; Z format (.Z)
 - [ ] &nbsp; 7-Zip Compressed File (.7z)
 - [ ] &nbsp; Save the archive in a different format.  
+
+
+### License
+
+Zkomp is an Open Source project covered by the `GNU General Public License version 2`
