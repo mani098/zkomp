@@ -47,3 +47,7 @@ OPTIONS:
 ### License
 
 Zkomp is an Open Source project covered by the `GNU General Public License version 2`
+
+### Attention
+
+Zkomp is under Pre-Alpha stage. Dive it under your own risk
