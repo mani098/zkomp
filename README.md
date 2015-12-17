@@ -41,7 +41,8 @@ OPTIONS:
 - [x] &nbsp; ZIP Archive (.zip)
 - [ ] &nbsp; Z format (.Z)
 - [ ] &nbsp; 7-Zip Compressed File (.7z)
-- [ ] &nbsp; Save the archive in a different format.  
+- [ ] &nbsp; Save the archive in a different format. Eg., gitbook.7z to gitbook.tar.gz    
+- [ ] &nbsp; Preview the content of and archive File. 
 
 
 ### License
