@@ -44,7 +44,6 @@ OPTIONS:
 - [ ] &nbsp; Save the archive in a different format. Eg., gitbook.7z to gitbook.tar.gz    
 - [ ] &nbsp; Preview the content of and archive File.
 
-
 ### License
 
 Zkomp is an Open Source project covered by the `GNU General Public License version 2`
