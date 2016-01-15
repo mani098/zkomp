@@ -50,7 +50,7 @@ extract_file() {
         *.gz) gunzip $1 &;; # Compression to be included
         *.tar)
             tar_options='xf'
-            extract_tar $1 $tar_options ;;
+            extract_tar $1 $tar_options     ;;
         *.tbz2)
             tar_options='xjf'
             extract_tar $1 $tar_options;;
@@ -59,8 +59,8 @@ extract_file() {
             extract_tar $1 $tar_options;;
         *.zip) extract_zip $1 &;;
         *.Z) uncompress $1 &;;
-        *.7z) 7z x $1 &;;
-        *.iso) extract_iso $1;;
+        *.7z) extract_7z $1 ;;
+        *.iso) extract_iso $1 ;;
         *) echo "'$1' cannot be extracted with zkomp" ;;
         esac
     else
@@ -91,10 +91,8 @@ get_extension() {
         conf_name="tar_bz2"
     elif [[ "$1" == "zip" ]]; then
         conf_name="zip"
-    # elif [[ '$1' == '' ]]; then
-    # elif [[ '$1' == '' ]]; then
     else
-        echo "'$1' cannot be compressed via zkomp"
+        echo "'$1' cannot be compressed with zkomp"
         exit 1
     fi
 }

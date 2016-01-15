@@ -2,7 +2,7 @@
 
 generate_random() {
     # bash generate random 32 character alphanumeric string (upper and lowercase) and
-    NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    # NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
     # bash generate random 32 character alphanumeric string (lowercase only)
     random_string="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
@@ -23,8 +23,13 @@ extract_iso(){
 extract_tar(){
     # $1 -> Source file
     # $2 -> tar options eg. xjf
-    generate_random
     output_dir=${1%/*}
     tar_options=$2 # eg. xjf
     exec tar $tar_options $1 -C $output_dir &
+}
+
+extract_7z(){
+    generate_random
+    output_dir=${1%.*}
+    exec 7z x $1 -o$output_dir | grep $random_string & # Included grep to run in 7z in silent mode: Just a Hack ;)
 }
