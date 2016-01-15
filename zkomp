@@ -1,7 +1,8 @@
 #!/bin/bash
 
 source ./libs/optparse.bash || exit 1
-optparse.define short=p long=path desc="Input File or Directory" variable=source_path
+optparse.define short=s long=source desc="Input File or Directory" variable=source_path
+# optparse.define short=d long=destination desc="Output File or Directory" variable=destination_path value=False
 optparse.define short=f long=format desc="Archive Format eg: tar, tar.gz, iso" variable=format
 optparse.define short=e long=extract desc="Extract the contents of the archives in the archive folder" variable=extract value=False
 source $( optparse.build )
@@ -13,7 +14,7 @@ if [ ! -z $extract ]; then
     extract_file $source_path
     pid=$! # Process Id of the previous running command
     spinner $pid
-    exit 
+    exit
 fi
 
 source ./zkomp.conf || exit 1
@@ -25,4 +26,4 @@ else
     compress_with_format ${default} $source_path
 fi
 
-exit 
+exit

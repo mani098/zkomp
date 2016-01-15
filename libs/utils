@@ -1,14 +1,6 @@
 #!/bin/bash
 source ./zkomp.conf || exit 1
 
-generate_random() {
-    # bash generate random 32 character alphanumeric string (upper and lowercase) and 
-    NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-
-    # bash generate random 32 character alphanumeric string (lowercase only)
-    random_string="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
-}
-
 # Validating the file or DIR exists and not repearinf twice or more in the arg
 validate_path() {
     if [[ -z "$1" ]]; then
@@ -43,44 +35,41 @@ spinner() {
     echo -ne "\n"
 }
 
+source ./libs/extract_source || exit 1
 extract_file() {
     if [ -f $1 ] ; then
         case $1 in
-        *.tar.bz2) tar xjf $1 &;;
-        *.tar.gz) tar xzf $1 &;;
+        *.tar.bz2)
+            tar_options='xjf'
+            extract_tar $1 $tar_options ;;
+        *.tar.gz)
+            tar_options='xzf'
+            extract_tar $1 $tar_options ;;
         *.bz2) bunzip2 $1 &;; # Compression to be included
         # *.rar) rar x $1 &;;
         *.gz) gunzip $1 &;; # Compression to be included
-        *.tar) tar xf $1 &;; 
-        *.tbz2) tar xjf $1 &;;
-        *.tgz) tar xzf $1 &;;
+        *.tar)
+            tar_options='xf'
+            extract_tar $1 $tar_options ;;
+        *.tbz2)
+            tar_options='xjf'
+            extract_tar $1 $tar_options;;
+        *.tgz)
+            tar_options='xzf'
+            extract_tar $1 $tar_options;;
         *.zip) extract_zip $1 &;;
         *.Z) uncompress $1 &;;
         *.7z) 7z x $1 &;;
         *.iso) extract_iso $1;;
-        *) echo "'$1' cannot be extracted via zkomp" ;;
+        *) echo "'$1' cannot be extracted with zkomp" ;;
         esac
     else
         echo "'$1' is not a valid file"
     fi
 }
 
-extract_zip(){
-    zip_file=$1
-    output_dir=${1%.*}
-    generate_random
-    exec unzip $1 -d $output_dir | grep $random_string  & # Included grep to run in unzip in silent mode: Just a Hack ;)
-}
-
-extract_iso(){
-    iso_file=$1
-    output_dir=${1%.*}
-    generate_random
-    exec 7z x $1 -o$output_dir | grep $random_string & # Included grep to run in 7z in silent mode: Just a Hack ;)
-}
-
 compress_with_format(){
-    
+
     get_extension $1
     command_name=${conf_name}[command]; command_name=${!command_name}
     options=${conf_name}[options]; options=${!options}
