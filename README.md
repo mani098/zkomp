@@ -26,11 +26,11 @@ OPTIONS:
 ### Example
 
 - Compress/Archive
-  - `./zkomp -p ~/Downloads/gitbook`  Default format to archive is `.tar.gz`
-  - `./zkomp -p ~/Downloads/gitbook -f iso` The default format can be overridden by -f(or)--format
+  - `./zkomp -s ~/Downloads/gitbook`  Default format to archive is `.tar.gz`
+  - `./zkomp -s ~/Downloads/gitbook -f iso` The default format can be overridden by -f(or)--format
 - Extract
-  - `./zkomp -p ~/downloads/gitbook.tar.gz -e` <br/>
-  - `./zkomp -p ~/downloads/gitbook.iso -e`
+  - `./zkomp -s ~/downloads/gitbook.tar.gz -e` <br/>
+  - `./zkomp -s ~/downloads/gitbook.iso -e`
 
 ### Task List
 
