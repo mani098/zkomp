@@ -1,39 +1,39 @@
 # Zkomp
 [![Join the chat at https://gitter.im/Bash-it/bash-it](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/manikandancsea/zkomp)
 
-Zkomp is a light weight command line archive manager for all linux distros.
+Zkomp is a light weight command line archive manager for all Linux distros.
 
   - Create archives.
   - Extract files from archive.
 
 ### How to use ?
 
-Zkomp is very ease to use. 
+Zkomp is very ease to use.
 
 - Download the [zkomp](https://github.com/manikandancsea/zkomp/archive/master.zip)
-- Extract it and goto `zkomp` folder 
+- Extract it and goto `zkomp` folder
 - run `./zkomp --help`
 
 ```
 usage: ./zkomp [OPTIONS]    
 OPTIONS:   
-	-p --path:    Input File or Directory   
+	-s --source:  Input File or Directory   
 	-f --format:  Archive Format eg: tar, tar.gz, iso  
 	-e --extract: Extract the contents of the archives in the archive folder  
-  -? --help  :  usage 
+  -? --help  :  usage
 ```
 
 ### Example
 
 - Compress/Archive
   - `./zkomp -p ~/Downloads/gitbook`  Default format to archive is `.tar.gz`
-  - `./zkomp -p ~/Downloads/gitbook -f iso` The default format can be overided by -f(or)--format
+  - `./zkomp -p ~/Downloads/gitbook -f iso` The default format can be overridden by -f(or)--format
 - Extract
   - `./zkomp -p ~/downloads/gitbook.tar.gz -e` <br/>
   - `./zkomp -p ~/downloads/gitbook.iso -e`
 
 ### Task List
-    
+
 - [x] &nbsp; Tar GZip (.tar.gz)              
 - [x] &nbsp; Tar format (.tar)
 - [x] &nbsp; Tar Bzip2 (.tar.bz2)
@@ -42,7 +42,7 @@ OPTIONS:
 - [ ] &nbsp; Z format (.Z)
 - [ ] &nbsp; 7-Zip Compressed File (.7z)
 - [ ] &nbsp; Save the archive in a different format. Eg., gitbook.7z to gitbook.tar.gz    
-- [ ] &nbsp; Preview the content of and archive File. 
+- [ ] &nbsp; Preview the content of and archive File.
 
 
 ### License
